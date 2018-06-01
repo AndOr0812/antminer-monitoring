@@ -5,6 +5,7 @@ Monitoring hashrate and temperature of antminer S9.
 External checks are used to run python scripts which retrieve information from bmminer api. 
 ## Prerequirements
 On the zabbix server: Python
+
 On antminer: bmminer api should be allowed
 ## Installation
 * Copy get_hashrate and get_temp to zabbix external script directory. For Ubuntu 16.04 it is /usr/lib/zabbix/externalscripts. Make sure scripts have executable permission.
