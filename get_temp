@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+import socket
+import sys
+
+if __name__ == '__main__':
+    try:
+        host = sys.argv[1]
+    except:
+        raise ValueError("Usage: script <host>")
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, 4028))
+        s.sendall("stats".encode(encoding='UTF-8',errors='strict'))
+        response = repr(s.recv(10240))
+        s.close()
+        temp = 0
+        for param in response.split(","):
+            if param.startswith("temp"):
+                try:
+                    tmp = float(param.split("=")[1])
+                    if (temp < tmp): temp = tmp
+                except:
+                    pass
+        print(temp)
+    except Exception as inst:
+        print("0")
