@@ -14,7 +14,7 @@ if __name__ == '__main__':
         response = repr(s.recv(10240))
         s.close()
         for param in response.split(","):
-            if param.startswith("GHS av="):
+            if param.startswith("GHS 5s="):
                 print(param[7:])
             #print(param)
 
